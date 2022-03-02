@@ -14,7 +14,11 @@
 	<name>portfolio</name>
 	<description>portifolio pessoal com as requisições post apenas para autenticados</description>
 	<properties>
-		<java.version>11</java.version>
+		<java.version>1.8</java.version>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>1.8</maven.compiler.target>
+		<libraries.directory>libraries</libraries.directory>
 	</properties>
 	<dependencies>
 		<dependency>

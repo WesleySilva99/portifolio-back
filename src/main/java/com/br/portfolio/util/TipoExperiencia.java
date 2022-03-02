@@ -1,9 +1,8 @@
 package com.br.portfolio.util;
 
-import lombok.Data;
 import lombok.Getter;
-import lombok.Setter;
 
+import java.util.Arrays;
 import java.util.List;
 
 @Getter
@@ -25,7 +24,7 @@ public enum TipoExperiencia {
 
     public static List<TipoExperiencia> getTiposExperiencia() {
 
-        List<TipoExperiencia> retorno = List.of(TipoExperiencia.values());
+        List<TipoExperiencia> retorno = Arrays.asList(TipoExperiencia.values());
 
         return retorno;
 
