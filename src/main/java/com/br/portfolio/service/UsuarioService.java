@@ -21,10 +21,4 @@ public class UsuarioService {
 
     }
 
-    public Usuario save(Usuario user){
-
-        return this.getExperienciaRepository().save(user);
-
-    }
-
 }

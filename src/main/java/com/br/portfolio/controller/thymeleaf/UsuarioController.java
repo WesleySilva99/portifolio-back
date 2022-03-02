@@ -24,27 +24,6 @@ public class UsuarioController {
         this.encoder = encoder;
     }
 
-    @RequestMapping("/usuario/cadastrar")
-    public String exibirCadastrarUsuario(){
-        return CaminhosUrl.CAMINHO_CADASTRAR_USUARIO;
-    }
-
-    @RequestMapping(path = "/usuario/cadastrar/action", method = RequestMethod.POST)
-    public String cadastrarUsuario(Usuario usuario, Model model){
-
-        Usuario userCadastrado = this.service.getUserByLogin(usuario.getLogin());
-        if (userCadastrado != null){
-            model.addAttribute("msg", "Usuário já cadastrado");
-            return CaminhosUrl.CAMINHO_CADASTRAR_USUARIO;
-        }
-
-        usuario.setSenha(encoder.encode(usuario.getSenha()));
-
-        this.service.save(usuario);
-
-        return CaminhosUrl.CAMINHO_INICIO;
-    }
-
     @RequestMapping("/")
     public String exibirLogin(){
         return CaminhosUrl.CAMINHO_INICIO;
