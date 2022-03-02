@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastrar Experiencia</title>
+</head>
+<body>
+<form action="/experiencia/cadastrar" method="POST">
+    <label>Descrição Principal</label><br>
+    <input type="text" name="descricaoPrincipal"><br>
+
+    <label>Descrição Secundaria</label><br>
+    <input type="text" name="descricaoSecundaria"><br>
+
+    <label>Descrição da Função</label><br>
+    <input type="text" name="descricaoDaFuncao"><br>
+
+    <label>Data início</label><br>
+    <input type="date" name="dataInicioDate"><br>
+
+    <label>Data Fim</label><br>
+    <input type="date" name="dataFimDate"><br>
+
+    <label>Empregador</label><br>
+    <input type="text" name="empresa"><br>
+
+    <label>Empregador</label><br>
+    <select name="tipoExperiencia" required="required">
+        <option value="">-----------------SELECIONE UMA OPÇÃO-----------------</option>
+        <option th:each="tipoExperiencia : ${tiposExperiencia}" th:value="${tipoExperiencia.codigo}" th:text="${tipoExperiencia.descricao}"></option>
+    </select><br>
+
+    <button type="submit">
+        Cadastrar
+    </button>
+</form>
+</body>
+</html>
