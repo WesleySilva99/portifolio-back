@@ -3,7 +3,6 @@ package com.br.portfolio.controller.thymeleaf;
 import com.br.portfolio.model.Usuario;
 import com.br.portfolio.service.UsuarioService;
 import com.br.portfolio.util.CaminhosUrl;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -46,5 +45,12 @@ public class UsuarioController {
 
             return CaminhosUrl.CAMINHO_INICIO;
         }
+    }
+    @RequestMapping("/usuario/deslogar")
+    public String deslogar(HttpSession session){
+
+        session.invalidate();
+
+        return CaminhosUrl.CAMINHO_INICIO;
     }
 }

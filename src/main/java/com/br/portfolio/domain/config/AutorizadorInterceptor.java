@@ -1,5 +1,6 @@
 package com.br.portfolio.domain.config;
 
+import com.br.portfolio.model.Usuario;
 import org.springframework.web.servlet.HandlerInterceptor;
 
 import javax.servlet.http.HttpServletRequest;
@@ -12,63 +13,34 @@ public class AutorizadorInterceptor implements HandlerInterceptor {
                              HttpServletResponse response, Object controller) throws
             Exception {
 
-        boolean retorno = true;
 
         String uri = request.getRequestURI();
-        /*
 
-        if (uri.contains("bootstrap") || uri.contains("css") ||
-                uri.contains("img") || uri.contains("js")
-                || uri.endsWith("exibir-login")
-                || uri.endsWith("deslogar")
-                || uri.endsWith("import-menu")
-                || uri.endsWith("imports")
-                || uri.endsWith("import-imoveis-list")
-                || uri.endsWith("efetuar-login")
-                || uri.contains("imovel-detalhe/")
+
+        if (uri.contains("bootstrap") || uri.contains("css") || uri.contains("scss") ||
+                uri.contains("img") || uri.contains("js") || uri.contains("icon")
+                || uri.endsWith("logar")
                 || uri.endsWith("/")) {
 
-            retorno = true;
+            return true;
         }
 
 
         Usuario usuarioLogado = (Usuario) request.getSession().getAttribute("usuarioLogado");
 
-        if (usuarioLogado == null && uri.contains("-adm")) {
+        if(usuarioLogado != null){
+            return true;
+        }
+
+        if (usuarioLogado == null && uri.contains("home")) {
 
             response.sendRedirect("/");
             return false;
 
-        }
-
-        if (usuarioLogado != null
-                && usuarioLogado.getTipoUsuario().getId() != 1
-                && uri.contains("-adm")) {
-
-            response.sendRedirect("/");
-            return false;
-
-        }
-
-        if (usuarioLogado != null
-                && usuarioLogado.getTipoUsuario().getId() == 1
-                && uri.contains("-adm")) {
-
-            return true;
-
-        }
-
-        if (usuarioLogado != null
-                && uri.endsWith("deslogar")) {
-            return true;
         }
 
         response.sendRedirect("/");
         return false;
-
-        */
-
-        return retorno;
 
     }
 
