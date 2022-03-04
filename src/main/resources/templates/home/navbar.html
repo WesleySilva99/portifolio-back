@@ -21,7 +21,8 @@
                             <!-- dark Logo text -->
                             <img src="/home/assets/images/logo-text.png" alt="homepage" class="dark-logo"/>
                     <!-- Light Logo text -->
-                            <img src="/home/assets/images/logo-light-text.png" class="light-logo" alt="homepage"/></span>
+                            <img src="/home/assets/images/logo-light-text.png" class="light-logo"
+                                 alt="homepage"/></span>
                 </a>
             </div>
             <!-- ============================================================== -->
@@ -58,9 +59,11 @@
                                 src="/home/assets/images/users/1.jpg" alt="user" class=""/> <span
                                 class="hidden-md-down" th:text="${session.usuarioLogado.login}">&nbsp;</span> </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a href="/usuario/deslogar">
-                                <button class="btn btn-sm btn-danger">Deslogar</button>
-                            </a>
+                            <center>
+                                <a href="/usuario/deslogar">
+                                    <button class="btn btn-sm btn-danger">Deslogar</button>
+                                </a>
+                            </center>
                         </ul>
                     </li>
                 </ul>
@@ -99,10 +102,12 @@
                             class="fa fa-question-circle"></i><span class="hide-menu">404</span></a>
                     </li>
                 </ul>
+                <!--
                 <div class="text-center mt-4">
                     <a href="https://www.wrappixel.com/templates/adminwrap/"
                        class="btn waves-effect waves-light btn-info hidden-md-down text-white"> Upgrade to Pro</a>
                 </div>
+                -->
             </nav>
             <!-- End Sidebar navigation -->
         </div>

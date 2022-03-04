@@ -46,6 +46,7 @@ public class UsuarioController {
             return CaminhosUrl.CAMINHO_INICIO;
         }
     }
+
     @RequestMapping("/usuario/deslogar")
     public String deslogar(HttpSession session){
 
@@ -53,4 +54,35 @@ public class UsuarioController {
 
         return CaminhosUrl.CAMINHO_INICIO;
     }
+
+    @RequestMapping("/usuario/cadastrar")
+    public String exibirCadastarUsuario(Model model){
+
+        if(this.service.findAll().size() > 0){
+
+            model.addAttribute("msg", "Usuario único já cadastrado");
+            return CaminhosUrl.CAMINHO_INICIO;
+
+        }
+
+        return CaminhosUrl.CAMINHO_CADASTRAR_USUARIO;
+    }
+
+    @RequestMapping(path = "/usuario/cadastrar/action", method = RequestMethod.POST)
+    public String cadastarUsuario(Model model, Usuario usuario){
+
+        if(this.service.findAll().size() > 0){
+
+            model.addAttribute("msg", "Usuário único já cadastrado");
+            return CaminhosUrl.CAMINHO_INICIO;
+
+        }
+
+        usuario.setSenha(encoder.encode(usuario.getSenha()));
+
+        this.service.save(usuario);
+
+        return CaminhosUrl.CAMINHO_INICIO;
+    }
+
 }

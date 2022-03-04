@@ -20,7 +20,8 @@ public class AutorizadorInterceptor implements HandlerInterceptor {
         if (uri.contains("bootstrap") || uri.contains("css") || uri.contains("scss") ||
                 uri.contains("img") || uri.contains("js") || uri.contains("icon")
                 || uri.endsWith("logar")
-                || uri.endsWith("/")) {
+                || uri.endsWith("/") || uri.contains("/api/v1/")
+                || uri.contains("/usuario/cadastrar")) {
 
             return true;
         }
