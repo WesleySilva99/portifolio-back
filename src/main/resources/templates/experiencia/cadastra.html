@@ -3,36 +3,81 @@
 <head>
     <meta charset="UTF-8">
     <title>Cadastrar Experiencia</title>
+    <div th:insert="/home/util :: imports">
+
+    </div>
 </head>
 <body>
-<form action="/experiencia/cadastrar" method="POST">
-    <label>Descrição Principal</label><br>
-    <input type="text" name="descricaoPrincipal"><br>
 
-    <label>Descrição Secundaria</label><br>
-    <input type="text" name="descricaoSecundaria"><br>
+<!-- ============================================================== -->
+<!-- Preloader - style you can find in spinners.css -->
+<!-- ============================================================== -->
+<div class="preloader">
+    <div class="loader">
+        <div class="loader__figure"></div>
+        <p class="loader__label">Wesley Silva</p>
+    </div>
+</div>
+<!-- ============================================================== -->
+<!-- Main wrapper - style you can find in pages.scss -->
+<!-- ============================================================== -->
+<div id="main-wrapper">
+    <!-- ============================================================== -->
+    <!-- Topbar header - style you can find in pages.scss -->
+    <!-- ============================================================== -->
+    <div th:insert="/home/navbar :: topNavBar">
 
-    <label>Descrição da Função</label><br>
-    <input type="text" name="descricaoDaFuncao"><br>
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Topbar header -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- Left Sidebar - style you can find in sidebar.scss  -->
+    <!-- ============================================================== -->
+    <div th:insert="/home/navbar :: leftNavBar">
 
-    <label>Data início</label><br>
-    <input type="date" name="dataInicioDate"><br>
+    </div>
+    <div class="page-wrapper">
+        <!-- ============================================================== -->
+        <!-- Container fluid  -->
+        <!-- ============================================================== -->
+        <div class="container-fluid">
+            <form action="/experiencia/save" method="POST">
 
-    <label>Data Fim</label><br>
-    <input type="date" name="dataFimDate"><br>
+                <!-- Id da experiencia caso seja a tela de editar  -->
+                <input type="hidden" name="id" th:value="${experiencia.id}">
 
-    <label>Empregador</label><br>
-    <input type="text" name="empresa"><br>
+                <label>Descrição Principal</label><br>
+                <input type="text" name="cargo" th:value="${experiencia.cargo}"><br>
 
-    <label>Empregador</label><br>
-    <select name="tipoExperiencia" required="required">
-        <option value="">-----------------SELECIONE UMA OPÇÃO-----------------</option>
-        <option th:each="tipoExperiencia : ${tiposExperiencia}" th:value="${tipoExperiencia.codigo}" th:text="${tipoExperiencia.descricao}"></option>
-    </select><br>
+                <label>Descrição Secundaria</label><br>
+                <input type="text" name="descricaoSecundaria" th:value="${experiencia.descricaoSecundaria}"><br>
 
-    <button type="submit">
-        Cadastrar
-    </button>
-</form>
+                <label>Descrição da Função</label><br>
+                <input type="text" name="descricaoAtividades" th:value="${experiencia.descricaoAtividades}"><br>
+
+                <label>Data início</label><br>
+                <input type="date" name="dataInicioDate" th:value="${dataInicioDate}"><br>
+
+                <label>Data Fim</label><br>
+                <input type="date" name="dataFimDate" th:value="${dataFimDate}"><br>
+
+                <label>Empregador</label><br>
+                <input type="text" name="nomeEmpresa" th:value="${experiencia.nomeEmpresa}"><br>
+
+                <label>Empregador</label><br>
+                <select name="tipoExperiencia" required="required">
+                    <option value="">-----------------SELECIONE UMA OPÇÃO-----------------</option>
+                    <option th:each="tipoExperiencia : ${tiposExperiencia}" th:value="${tipoExperiencia.codigo}"
+                            th:text="${tipoExperiencia.descricao}"></option>
+                </select><br>
+
+                <button type="submit">
+                    Salvar
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
 </body>
 </html>

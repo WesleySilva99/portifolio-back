@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastrar Experiencia</title>
+    <div th:insert="/home/util :: imports">
+
+    </div>
+</head>
+<body>
+
+<!-- ============================================================== -->
+<!-- Preloader - style you can find in spinners.css -->
+<!-- ============================================================== -->
+<div class="preloader">
+    <div class="loader">
+        <div class="loader__figure"></div>
+        <p class="loader__label">Wesley Silva</p>
+    </div>
+</div>
+<!-- ============================================================== -->
+<!-- Main wrapper - style you can find in pages.scss -->
+<!-- ============================================================== -->
+<div id="main-wrapper">
+    <!-- ============================================================== -->
+    <!-- Topbar header - style you can find in pages.scss -->
+    <!-- ============================================================== -->
+    <div th:insert="/home/navbar :: topNavBar">
+
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Topbar header -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- Left Sidebar - style you can find in sidebar.scss  -->
+    <!-- ============================================================== -->
+    <div th:insert="/home/navbar :: leftNavBar">
+
+    </div>
+    <div class="page-wrapper">
+        <!-- ============================================================== -->
+        <!-- Container fluid  -->
+        <!-- ============================================================== -->
+        <div class="container-fluid">
+            <!-- ============================================================== -->
+            <!-- Bread crumb and right sidebar toggle -->
+            <!-- ============================================================== -->
+            <div class="row page-titles">
+                <div class="col-md-5 align-self-center">
+                    <h3 class="text-themecolor">Table Basic</h3>
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
+                        <li class="breadcrumb-item active">Table Basic</li>
+                    </ol>
+                </div>
+                <div class="col-md-7 align-self-center">
+                    <a href="https://www.wrappixel.com/templates/adminwrap/"
+                       class="btn waves-effect waves-light btn btn-info pull-right hidden-sm-down text-white"> Upgrade to
+                        Pro</a>
+                </div>
+            </div>
+            <!-- ============================================================== -->
+            <!-- End Bread crumb and right sidebar toggle -->
+            <!-- ============================================================== -->
+            <!-- ============================================================== -->
+            <!-- Start Page Content -->
+            <!-- ============================================================== -->
+            <div class="row">
+                <!-- column -->
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title">Basic Table</h4>
+                            <h6 class="card-subtitle"><code th:text="${msg}"></code></h6>
+                            <div class="table-responsive">
+                                <table class="table table-responsive-xl">
+                                    <thead>
+                                    <tr>
+                                        <th>Cargo</th>
+                                        <th>Empresa</th>
+                                        <th>Descrição</th>
+                                        <th>Início</th>
+                                        <th>Fim</th>
+                                        <th>Ações</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr class="alert" role="alert" th:each="experiencia : ${experiencias}">
+                                        <td>
+                                            <label class="checkbox-wrap checkbox-primary" th:text="${experiencia.cargo}">
+                                            </label>
+                                        </td>
+                                        <td class="d-flex align-items-center" th:text="${experiencia.nomeEmpresa}">
+                                        </td>
+                                        <td th:text="${experiencia.descricaoAtividades}">
+                                        </td>
+                                        <td class="status" th:text="${#dates.format(experiencia.dataInicio, 'dd/MM/yyyy')}">
+                                        </td>
+                                        <td th:text="${#dates.format(experiencia.dataFim, 'dd/MM/yyyy')}">
+                                        </td>
+                                        <td>
+                                            <a th:href="@{/experiencia/editar/{id}(id = ${experiencia.id})}" title="Editar">
+                                                <i class="fa fa-edit"></i>
+                                            </a>
+                                            <a th:href="@{/experiencia/deletar/{id}(id = ${experiencia.id})}" title="Deletar">
+                                                <i class="fa fa-trash-o"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- ============================================================== -->
+            <!-- End PAge Content -->
+            <!-- ============================================================== -->
+        </div>
+    </div>
+</div>
+</body>
+</html>

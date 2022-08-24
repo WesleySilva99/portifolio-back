@@ -1,6 +1,7 @@
 package com.br.portfolio.domain.config;
 
 import com.br.portfolio.model.Usuario;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.HandlerInterceptor;
 
 import javax.servlet.http.HttpServletRequest;
@@ -13,14 +14,16 @@ public class AutorizadorInterceptor implements HandlerInterceptor {
                              HttpServletResponse response, Object controller) throws
             Exception {
 
-
         String uri = request.getRequestURI();
 
+        if(uri.contains("api") || uri.contains("error") || request.getMethod() == RequestMethod.GET.toString()){
+            return true;
+        }
 
         if (uri.contains("bootstrap") || uri.contains("css") || uri.contains("scss") ||
                 uri.contains("img") || uri.contains("js") || uri.contains("icon")
                 || uri.endsWith("logar")
-                || uri.endsWith("/") || uri.contains("/api/v1/")
+                || uri.endsWith("/")
                 || uri.contains("/usuario/cadastrar")) {
 
             return true;

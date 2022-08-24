@@ -7,6 +7,7 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -21,16 +22,16 @@ public class Experiencia {
     private Long id;
 
     @Column(name = "desc_principal")
-    private String descricaoPrincipal;
+    private String cargo;
 
     @Column(name = "desc_secundaria")
     private String descricaoSecundaria;
 
     @Column(name = "desc_func")
-    private String descricaoDaFuncao;
+    private String descricaoAtividades;
 
-    @Column
-    private String empresa;
+    @Column(name = "nome_empresa")
+    private String nomeEmpresa;
 
     @Column(name = "data_inicio")
     private Date dataInicio;
@@ -40,5 +41,13 @@ public class Experiencia {
 
     @Column
     private Long tipoExperiencia;
+
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "experencia_skill",
+            joinColumns = {@JoinColumn(name = "id_experiencia",
+                    referencedColumnName = "id")},
+            inverseJoinColumns = {@JoinColumn(name = "id_skill",
+                    referencedColumnName = "id")})
+    private List<Skill> skills;
 
 }
