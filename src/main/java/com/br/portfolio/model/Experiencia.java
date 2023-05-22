@@ -14,7 +14,7 @@ import java.util.List;
 @NoArgsConstructor
 @EnableAutoConfiguration
 @Entity
-@Table(name = "experience")
+@Table(name = "experience_application_portifolio")
 public class Experiencia {
 
     @Id
@@ -43,7 +43,7 @@ public class Experiencia {
     private Long tipoExperiencia;
 
     @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(name = "experencia_skill",
+    @JoinTable(name = "experencia_skill_application_portifolio",
             joinColumns = {@JoinColumn(name = "id_experiencia",
                     referencedColumnName = "id")},
             inverseJoinColumns = {@JoinColumn(name = "id_skill",

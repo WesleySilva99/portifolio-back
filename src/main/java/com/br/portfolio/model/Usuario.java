@@ -12,7 +12,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 @EnableAutoConfiguration
 @Entity
-@Table(name = "user_application")
+@Table(name = "user_application_protifolio")
 public class Usuario {
 
     @Id
