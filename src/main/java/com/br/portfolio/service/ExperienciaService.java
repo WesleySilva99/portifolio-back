@@ -55,4 +55,11 @@ public class ExperienciaService {
 
     }
 
+    public List<Experiencia> trataTiposExperiencia(List<Experiencia> lista){
+        for(Experiencia atual: lista){
+            atual.setTipoExperienciaEnum(TipoExperiencia.getTipoExperienciaByCodigo(atual.getTipoExperiencia()));
+        }
+        return lista;
+    }
+
 }

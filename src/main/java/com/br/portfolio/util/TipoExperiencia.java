@@ -30,4 +30,15 @@ public enum TipoExperiencia {
 
     }
 
+    public static TipoExperiencia getTipoExperienciaByCodigo(Long codigo) {
+        TipoExperiencia retorno = null;
+
+        for(TipoExperiencia tipoAtual: getTiposExperiencia()){
+            if(tipoAtual.getCodigo().equals(codigo))
+                retorno = tipoAtual;
+        }
+
+        return retorno;
+    }
+
 }

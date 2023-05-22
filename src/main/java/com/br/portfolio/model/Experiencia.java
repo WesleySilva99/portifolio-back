@@ -1,5 +1,6 @@
 package com.br.portfolio.model;
 
+import com.br.portfolio.util.TipoExperiencia;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -49,5 +50,7 @@ public class Experiencia {
             inverseJoinColumns = {@JoinColumn(name = "id_skill",
                     referencedColumnName = "id")})
     private List<Skill> skills;
+
+    private TipoExperiencia tipoExperienciaEnum;
 
 }
